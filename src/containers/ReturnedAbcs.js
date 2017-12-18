@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import Abcs from '../components/Abcs'
-import { invalidateAbcs } from '../actions'
+import { fetchAbcs, ABC_ENDPOINT } from '../actions'
 
 // function to transform redux store to props to pass to presentational components
 
@@ -16,7 +16,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onLettersClick: () => {
-      dispatch(invalidateAbcs())
+      dispatch(fetchAbcs(ABC_ENDPOINT))
     }
   }
 }

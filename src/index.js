@@ -12,4 +12,5 @@ ReactDOM.render(
    document.getElementById('root')
  )
 
+// initial fetch of letters
 store.dispatch(fetchAbcs(ABC_ENDPOINT))
