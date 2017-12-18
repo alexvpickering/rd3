@@ -12,7 +12,7 @@ describe('actions', () => {
   })
 
   it('should create an action to signal ABCs received', () => {
-    const abcs = ['A', 'B', 'C']
+    const abcs = ['a', 'b', 'c']
     const expectedAction = {
       type: RECEIVE_ABCS,
       abcs

@@ -14,6 +14,7 @@
 #' @export
 #'
 #' @examples
-get_skills <- function(toadd=NULL) {
-  return(c('HTML', 'Javascript', 'R', toadd))
+abcs <- function() {
+  nletters <- sample(26, 1)
+  return(sample(letters, nletters))
 }
