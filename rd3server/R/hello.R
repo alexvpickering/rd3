@@ -14,6 +14,6 @@
 #' @export
 #'
 #' @examples
-get_skills <- function(toadd) {
+get_skills <- function(toadd=NULL) {
   return(c('HTML', 'Javascript', 'R', toadd))
 }
