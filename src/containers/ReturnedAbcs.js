@@ -1,3 +1,7 @@
+import { connect } from 'react-redux'
+import Abcs from '../components/Abcs'
+import { invalidateAbcs } from '../actions'
+
 // function to transform redux store to props to pass to presentational components
 
 const mapStateToProps = state => {
@@ -6,7 +10,7 @@ const mapStateToProps = state => {
   }
 }
 
-// function that received dispatch() and returns callback props that you want
+// function that receives dispatch() and returns callback props that you want
 //  to inject into the presentational components
 
 const mapDispatchToProps = dispatch => {
@@ -16,3 +20,10 @@ const mapDispatchToProps = dispatch => {
     }
   }
 }
+
+const ReturnedAbcs = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Abcs)
+
+export default ReturnedAbcs

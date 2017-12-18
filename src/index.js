@@ -1,15 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Abcs from './components/Abcs'
-import { invalidateAbcs } from './actions'
+import { Provider } from 'react-redux'
+import App from './components/App'
 import store from './store'
+import { fetchAbcs, ABC_ENDPOINT } from './actions'
 
 ReactDOM.render(
-  <Abcs
-    letters={['a', 'b', 'c']}
-    onLettersClick={() => {
-        store.dispatch(invalidateAbcs())
-      }}
-    />,
+  <Provider store={store}>
+    <App />
+  </Provider>,
    document.getElementById('root')
  )
+
+store.dispatch(fetchAbcs(ABC_ENDPOINT))
