@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Abcs = ({ letters }) => (
-  <span>
+const Abcs = ({ letters, onLettersClick }) => (
+  <span onClick={() => onLettersClick()}>
     {letters.join('')}
   </span>
 )
