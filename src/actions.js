@@ -1,17 +1,10 @@
 import axios from 'axios'
 
-export const INVALIDATE_ABCS = 'INVALIDATE_ABCS'
 export const REQUEST_ABCS = 'REQUEST_ABCS'
 export const RECEIVE_ABCS = 'RECEIVE_ABCS'
 export const ABC_ENDPOINT = 'http://localhost:5656/ocpu/library/rd3server/R/abcs/json'
 
 // * synchronous action creators
-
-export function invalidateAbcs() {
-  return {
-    type: INVALIDATE_ABCS
-  }
-}
 
 export function requestAbcs() {
   return {
