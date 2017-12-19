@@ -15,6 +15,6 @@
 #'
 #' @examples
 abcs <- function() {
-  nletters <- sample(26, 1)
+  nletters <- sample(13, 1)
   return(sample(letters, nletters))
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import * as d3 from 'd3'
+import './AlphabetD3Styles.css'
 
 class AlphabetD3 extends React.Component {
   constructor(props) {
@@ -14,20 +15,24 @@ class AlphabetD3 extends React.Component {
   }
 
   componentDidUpdate() {
-    this.createAlphabetD3()
+    this.updateData(this.props.letters, this.g);
   }
 
   createAlphabetD3() {
     const node = this.node
-    var alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
+    if (this.props.letters) {
+      var alphabet = this.props.letters
+      console.log(this.props.letters)
+    } else {
+      var alphabet = ['a', 'b', 'c']
+    }
 
     var svg = d3.select(node),
         width = +svg.attr("width"),
         height = +svg.attr("height"),
         g = svg.append("g").attr("transform", "translate(32," + (height / 2) + ")");
 
-    console.log(width, height)
-
+    this.g = g
     this.updateData(alphabet, g);
   }
 
@@ -63,6 +68,7 @@ class AlphabetD3 extends React.Component {
     return (
       <svg
         ref={node => this.node=node}
+        onClick={() => this.props.onLettersClick()}
         width={960}
         height={500}>
       </svg>

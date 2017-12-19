@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import Abcs from '../components/Abcs'
+import AlphabetD3 from '../components/AlphabetD3'
 import { fetchAbcs, ABC_ENDPOINT } from '../actions'
 
 // function to transform redux store to props to pass to presentational components
@@ -24,6 +24,6 @@ const mapDispatchToProps = dispatch => {
 const ReturnedAbcs = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Abcs)
+)(AlphabetD3)
 
 export default ReturnedAbcs
