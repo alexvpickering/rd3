@@ -20,15 +20,10 @@ class AlphabetD3 extends React.Component {
 
   createAlphabetD3() {
     const node = this.node
-    if (this.props.letters) {
-      var alphabet = this.props.letters
-      console.log(this.props.letters)
-    } else {
-      var alphabet = ['a', 'b', 'c']
-    }
+    var alphabet = ['a', 'b', 'c']
 
     var svg = d3.select(node),
-        width = +svg.attr("width"),
+
         height = +svg.attr("height"),
         g = svg.append("g").attr("transform", "translate(32," + (height / 2) + ")");
 
