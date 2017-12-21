@@ -23,7 +23,6 @@ class AlphabetD3 extends React.Component {
     var alphabet = ['a', 'b', 'c']
 
     var svg = d3.select(node),
-
         height = +svg.attr("height"),
         g = svg.append("g").attr("transform", "translate(32," + (height / 2) + ")");
 
@@ -32,31 +31,42 @@ class AlphabetD3 extends React.Component {
   }
 
   updateData(data, g) {
+
+    var t = d3.transition()
+      .duration(750);
+
     // DATA JOIN
     // Join new data with old elements, if any.
     var text = g.selectAll("text")
-      .data(data);
+      .data(data, d => d);
 
-    // UPDATE
-    // Update old elements as needed.
-    text.attr("class", "update");
+    // EXIT old elements not prsent in new data.
+    text.exit()
+        .attr("class", "exit")
+      .transition(t)
+        .attr("y", 60)
+        .style("fill-opacity", 1e-6)
+        .remove();
 
-    // ENTER
-    // Create new elements as needed.
-    //
-    // ENTER + UPDATE
-    // After merging the entered elements with the update selection,
-    // apply operations to both.
+    // UPDATE old elements not present in new data
+    text.attr("class", "update")
+        .attr("y", 0)
+        .style("fill-opacity", 1)
+      .transition(t)
+        .attr("x", function(d, i) {return i * 32})
+
+    // ENTER new elements present in new data.
     text.enter().append("text")
         .attr("class", "enter")
-        .attr("x", function(d, i) { return i * 32; })
         .attr("dy", ".35em")
-      .merge(text)
-        .text(function(d) { return d; });
+        .attr("y", -60)
+        .attr("x", function(d, i) { return i * 32 })
+        .style("fill-opacity", 1e-6)
+        .text(function(d) {return d})
+      .transition(t)
+        .attr("y", 0)
+        .style("fill-opacity", 1)
 
-    // EXIT
-    // Remove old elements as needed.
-    text.exit().remove();
   }
 
   render() {
