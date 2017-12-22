@@ -1,6 +1,7 @@
 import React from 'react'
 import * as d3 from 'd3'
 import './AlphabetD3Styles.css'
+import { Container } from 'semantic-ui-react'
 
 class AlphabetD3 extends React.Component {
   constructor(props) {
@@ -71,12 +72,14 @@ class AlphabetD3 extends React.Component {
 
   render() {
     return (
-      <svg
-        ref={node => this.node=node}
-        onClick={() => this.props.onLettersClick()}
-        width={960}
-        height={500}>
-      </svg>
+      <Container text style={{marginTop: '7em'}}>
+        <svg
+          ref={node => this.node=node}
+          onClick={() => this.props.onLettersClick()}
+          width={960}
+          height={500}>
+        </svg>
+    </Container>
     )
   }
 }
