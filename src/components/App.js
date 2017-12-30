@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import ReturnedAbcs from '../containers/ReturnedAbcs'
 import About from './About'
+import Play from './Play'
+import '../styles.css'
 
 import {
   Button,
-  Grid,
   Menu,
-  Segment,
+  Container,
 } from 'semantic-ui-react'
 
 import {
@@ -29,7 +30,7 @@ export default class App extends Component {
         <Menu pointing>
           <Menu.Item name='home' active={activeItem === 'home'} as={Link} onClick={this.handleItemClick} to="/">Home</Menu.Item>
           <Menu.Item name='about' active={activeItem === 'about'} as={Link} onClick={this.handleItemClick} to="/about">About</Menu.Item>
-          <Menu.Item name='topics' active={activeItem === 'topics'} as={Link} onClick={this.handleItemClick} to="/topics">Topics</Menu.Item>
+          <Menu.Item name='play' active={activeItem === 'play'} as={Link} onClick={this.handleItemClick} to="/play">Play</Menu.Item>
           <Menu.Menu position='right'>
             <Menu.Item>
               <Button basic>Log in</Button>
@@ -38,16 +39,11 @@ export default class App extends Component {
           </Menu.Menu>
         </Menu>
 
-        <Segment style={{ padding: '8em 0em' }} vertical>
-          <Grid container stackable verticalAlign='middle'>
-            <Grid.Row>
-              <Grid.Column width={8}>
-                <Route exact path="/" component={ReturnedAbcs}/>
-                <Route path="/about" component={About}/>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Segment>
+        <Container>
+          <Route exact path="/" component={ReturnedAbcs}/>
+          <Route path="/about" component={About}/>
+          <Route path="/play" component={Play}/>
+        </Container>
       </div>
     </Router>
     )

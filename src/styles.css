@@ -1,4 +1,4 @@
-text {
+.abcd3 {
   font: bold 48px monospace;
 }
 
@@ -12,4 +12,10 @@ text {
 
 .exit {
   fill: brown;
+}
+
+.grid-line {
+  fill: grey;
+  stroke: grey;
+  stroke-width: 0.3px;
 }

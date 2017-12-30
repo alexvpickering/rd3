@@ -1,6 +1,5 @@
 import React from 'react'
 import * as d3 from 'd3'
-import './AlphabetD3Styles.css'
 import { Container } from 'semantic-ui-react'
 
 class AlphabetD3 extends React.Component {
@@ -25,7 +24,9 @@ class AlphabetD3 extends React.Component {
 
     var svg = d3.select(node),
         height = +svg.attr("height"),
-        g = svg.append("g").attr("transform", "translate(32," + (height / 2) + ")");
+        g = svg.append("g")
+        .attr("transform", "translate(32," + (height / 2) + ")")
+        .attr("class", "abcd3")
 
     this.g = g
     this.updateData(alphabet, g);
@@ -39,7 +40,7 @@ class AlphabetD3 extends React.Component {
     // DATA JOIN
     // Join new data with old elements, if any.
     var text = g.selectAll("text")
-      .data(data, d => d);
+      .data(data, d => d)
 
     // EXIT old elements not prsent in new data.
     text.exit()
@@ -76,8 +77,8 @@ class AlphabetD3 extends React.Component {
         <svg
           ref={node => this.node=node}
           onClick={() => this.props.onLettersClick()}
-          width={960}
-          height={500}>
+          width={'100%'}
+          height={200}>
         </svg>
     </Container>
     )
