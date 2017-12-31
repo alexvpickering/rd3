@@ -19,3 +19,12 @@
   stroke: grey;
   stroke-width: 0.3px;
 }
+
+.link {
+  fill: none;
+  stroke: blue;
+}
+
+.node {
+  fill: red;
+}

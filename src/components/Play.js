@@ -11,105 +11,50 @@ class Play extends React.Component {
           height = 500 - (2 * margin),
           width  = 500 - (2 * margin)
 
+    const g = d3.select(node).append("g")
+        .attr("transform", `translate(${margin}, ${margin})`)
 
 
     const data = [
-        {month: "2013", apples: 100, bananas: 200, oranges: 130},
-        {month: "2014", apples: 300, bananas: 150, oranges: 120},
-        {month: "2015", apples:  200, bananas:  280, oranges: 200},
-        {month: "2016", apples:  400, bananas:  100, oranges: 300},
-        {month: "2017", apples:  230, bananas:  400, oranges: 100}
+      	{"name": "John",   "parent": ""},
+      	{"name": "Jack",  "parent": "John"},
+      	{"name": "Drake",  "parent": "John"},
+      	{"name": "Keith",  "parent": "Drake"},
+      	{"name": "Harry",  "parent": "Drake"},
+      	{"name": "Joshua",  "parent": "John"},
+      	{"name": "Smith",  "parent": "John"},
+      	{"name": "Peter", "parent": "Smith"},
+      	{"name": "Larry", "parent": "John"}
       ]
 
-    var stack = d3.stack()
-        .keys(["apples", "bananas", "oranges"])
 
-    var series = stack(data)
+    const tree = d3.tree()
+        .size([height, width])
 
-    console.log(series)
-
-    var xScale = d3.scaleBand()
-        .domain(data.map(d => d.month))
-        .range([0, width])
-        .padding(0.3)
-
-    var yScale = d3.scaleLinear()
-        .domain([stackMin(), stackMax()])
-        .range([height, 0])
-
-    var colorScale = d3.scaleOrdinal(d3.schemeCategory10)
-
-    function extractValues(series) {
-      var values = [];
-      series.forEach(function(value) {
-        value.forEach(function(item) {
-          values = values.concat(item)
-        })
-      })
-      return values
-    }
-
-    function stackMin() {
-      var values = extractValues(series)
-      return d3.min(values)
-    }
-
-    function stackMax() {
-      var values = extractValues(series)
-      return d3.max(values)
-    }
-
-    const g = d3.select(node).append("g")
-    .attr("transform", `translate(${margin}, ${margin})`)
-
-    function renderYAxis() {
-      var yAxis = d3.axisLeft(yScale)
-
-      g.append("g")
-          .classed("y-axis", true)
-          .call(yAxis)
-
-      g.selectAll("g.y-axis g.tick")
-        .append("line")
-          .classed("grid-line", true)
-          .attr("x1", 0)
-          .attr("y1", 0)
-          .attr("x2", width)
-          .attr("y2", 0)
-    }
-
-    function renderXAxis() {
-      var xAxis = d3.axisBottom(xScale)
-
-      g.append("g")
-          .classed("x-axis", true)
-          .attr("transform", `translate(0, ${height})`)
-          .call(xAxis)
-    }
-
-    renderYAxis()
-    renderXAxis()
-
-    g.append("g")
-        .classed("stack-bar", true)
-      .selectAll("g")
-      .data(series)
-      .enter()
-      .append("g")
-        .attr("fill", d => colorScale(d.key))
-      .selectAll("rect")
-      .data(d => d)
-      .enter()
-      .append("rect")
-        .attr("x", (d, i) => xScale(2013 + i))
-        .attr("y", d => yScale(d["1"]))
-        .attr("width", xScale.bandwidth())
-        .attr("height", function(d) {return height - yScale(d["1"] - d["0"])})
+    const statify = d3.stratify()
+        .id(d => d.name)
+        .parentId(d => d.parent)
 
 
+    const root = statify(data)
+    console.log(tree(root).descendants().slice(1))
+    console.log(tree(root).descendants())
 
+    const treeG = g.append("g")
+        .classed("treeG", true)
 
-    console.log(xScale(2013))
+    treeG.selectAll(".links")
+        .data(tree(root).descendants().slice(1))
+        .enter()
+        .append("path")
+        .classed("link", true)
+        .attr("d", function(d) {
+          return "M" + d.y + "," + d.x
+            + "C" + (d.y + d.parent.y) / 2 + "," + d.x
+            + " " + (d.y + d.parent.y) / 2 + "," + d.parent.x
+            + " " + d.parent.y + "," + d.parent.x;
+        });
+
 
 
 
