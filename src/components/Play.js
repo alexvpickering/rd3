@@ -9,66 +9,38 @@ class Play extends React.Component {
           height = 500 - (2 * margin),
           width  = 500 - (2 * margin)
 
-    const g = d3.select(node).append("g")
+    const arc1 = d3.arc()
+        .innerRadius(0)
+        .outerRadius(100)
+        .startAngle(Math.PI/2)
+        .endAngle(Math.PI*3/2)
+
+    const arc2 = d3.arc()
+        .innerRadius(50)
+        .outerRadius(100)
+        .startAngle(0)
+        .endAngle(Math.PI*2)
+
+
+    const g = d3.select(node)
+      .append("g")
         .attr("transform", `translate(${margin}, ${margin})`)
 
-
-    const xScale = d3.scaleLinear()
-        .domain([0, 9])
-        .range([0, width])
-
-    const yScale = d3.scaleLinear()
-        .domain([0, 9])
-        .range([height, 0])
-
-    const xAxis = d3.axisBottom(xScale)
-    g.append("g")
-        .attr("transform", `translate(0, ${height})`)
-        .call(xAxis)
-
-    const yAxis = d3.axisLeft(yScale)
-        .ticks(10)
-
-    g.append("g")
-        .call(yAxis)
-
-    var data = [
-      	{x: 0, y: 4},
-      	{x: 1, y: 9},
-      	{x: 2, y: 6},
-      	{x: 4, y: 5},
-      	{x: 6, y: 7},
-      	{x: 7, y: 3},
-      	{x: 9, y: 2}
-      ]
-
-    var data2 = [
-        {x: 0, y: 3},
-        {x: 2, y: 7},
-        {x: 3, y: 4},
-        {x: 4, y: 3},
-        {x: 6, y: 3},
-        {x: 8, y: 4},
-        {x: 9, y: 1}
-      ]
-
-    var area = d3.area()
-        .x(d => xScale(d.x))
-        .y0(yScale(0))
-        .y1(d => yScale(d.y))
-        .curve(d3.curveLinear)
-
-    console.log(area(data))
+    g.append("path")
+        .attr("transform", "translate(200, 300)")
+        .attr("d", arc1())
+        .attr("fill", "red")
 
     g.append("path")
-        .attr("d", area(data))
-        .attr("fill", "#ffad99")
-        .attr("stroke", "red")
+        .attr("transform", "translate(200, 100)")
+        .attr("d", arc2())
+        .attr("fill", "blue")
+
 
     g.append("path")
-        .attr("d", area(data2))
-        .attr("fill", "#b3d9ff")
-        .attr("stroke", "blue")
+
+
+
 
   }
 
