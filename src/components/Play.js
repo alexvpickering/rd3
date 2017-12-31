@@ -9,57 +9,37 @@ class Play extends React.Component {
     const node = this.node
     const margin = 50,
           height = 500 - (2 * margin),
-          width  = 500 - (2 * margin)
+          width  = 500 - (2 * margin),
+          r = 10
+
+    const data = [
+            [width / 2 - r, height / 2 - r],
+            [width / 2 - r, height / 2 + r],
+            [width / 2 + r, height / 2 - r],
+            [width / 2 + r, height / 2 + r]
+          ]
+
+    const zoom = d3.zoom()
+        .scaleExtent([1, 10])
+        .on("zoom", zoomed);
+
 
     const g = d3.select(node).append("g")
         .attr("transform", `translate(${margin}, ${margin})`)
+        .style("border", "1px solid")
+        .call(zoom)
+      .append("g")
 
+    g.selectAll("circle")
+      .data(data)
+      .enter()
+      .append("circle")
+          .attr("r", r)
+          .attr("transform", d => `translate(${d})`)
 
-    const data = [
-      	{"name": "John",   "parent": ""},
-      	{"name": "Jack",  "parent": "John"},
-      	{"name": "Drake",  "parent": "John"},
-      	{"name": "Keith",  "parent": "Drake"},
-      	{"name": "Harry",  "parent": "Drake"},
-      	{"name": "Joshua",  "parent": "John"},
-      	{"name": "Smith",  "parent": "John"},
-      	{"name": "Peter", "parent": "Smith"},
-      	{"name": "Larry", "parent": "John"}
-      ]
-
-
-    const tree = d3.tree()
-        .size([height, width])
-
-    const statify = d3.stratify()
-        .id(d => d.name)
-        .parentId(d => d.parent)
-
-
-    const root = statify(data)
-    console.log(tree(root).descendants().slice(1))
-    console.log(tree(root).descendants())
-
-    const treeG = g.append("g")
-        .classed("treeG", true)
-
-    treeG.selectAll(".links")
-        .data(tree(root).descendants().slice(1))
-        .enter()
-        .append("path")
-        .classed("link", true)
-        .attr("d", function(d) {
-          return "M" + d.y + "," + d.x
-            + "C" + (d.y + d.parent.y) / 2 + "," + d.x
-            + " " + (d.y + d.parent.y) / 2 + "," + d.parent.x
-            + " " + d.parent.y + "," + d.parent.x;
-        });
-
-
-
-
-
-
+function zoomed() {
+  g.attr("transform", "translate(" + d3.event.transform.x + "," + d3.event.transform.y + ") scale(" + d3.event.transform.k + ")");
+}
 
   }
 
@@ -72,6 +52,7 @@ class Play extends React.Component {
         width="500"
         height="500"
         style={{border: '1px solid'}}>
+        <text></text>
       </svg>
     </div>
     )
