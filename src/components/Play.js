@@ -9,61 +9,66 @@ class Play extends React.Component {
           height = 500 - (2 * margin),
           width  = 500 - (2 * margin)
 
-
-    // container translated
-    const g = d3.select(node)
-      .append("g")
+    const g = d3.select(node).append("g")
         .attr("transform", `translate(${margin}, ${margin})`)
 
-      const xScale = d3.scaleLinear()
-          .domain([0, 100])
-          .range([0, width])
 
-      const yScale = d3.scaleLinear()
-          .domain([0, 100])
-          .range([height, 0])
+    const xScale = d3.scaleLinear()
+        .domain([0, 9])
+        .range([0, width])
 
-      const xAxis = d3.axisBottom(xScale)
-          .ticks(5)
-          .tickPadding(10)
-          .tickFormat(d => d + "%")
+    const yScale = d3.scaleLinear()
+        .domain([0, 9])
+        .range([height, 0])
 
-      const yAxis = d3.axisLeft(yScale)
-          .ticks(5)
-          .tickPadding(10)
-          .tickFormat(d => d + "%")
+    const xAxis = d3.axisBottom(xScale)
+    g.append("g")
+        .attr("transform", `translate(0, ${height})`)
+        .call(xAxis)
 
-      g.append("g")
-          .classed("x-axis", true)
-          .attr("transform", `translate(0, ${height})`)
-          .call(xAxis)
+    const yAxis = d3.axisLeft(yScale)
+        .ticks(10)
 
-      g.append("g")
-          .classed("y-axis", true)
-          .call(yAxis)
+    g.append("g")
+        .call(yAxis)
 
-      g.selectAll("g.x-axis g.tick")
-        .append("line")
-          .classed("grid-line", true)
-          .attr("x1", 0)
-          .attr("y1", 0)
-          .attr("x2", 0)
-          .attr("y2", -height)
+    var data = [
+      	{x: 0, y: 4},
+      	{x: 1, y: 9},
+      	{x: 2, y: 6},
+      	{x: 4, y: 5},
+      	{x: 6, y: 7},
+      	{x: 7, y: 3},
+      	{x: 9, y: 2}
+      ]
 
-      g.selectAll("g.y-axis g.tick")
-        .append("line")
-          .classed("grid-line", true)
-          .attr("x1", 0)
-          .attr("y1", 0)
-          .attr("x2", width)
-          .attr("y2", 0)
+    var data2 = [
+        {x: 0, y: 3},
+        {x: 2, y: 7},
+        {x: 3, y: 4},
+        {x: 4, y: 3},
+        {x: 6, y: 3},
+        {x: 8, y: 4},
+        {x: 9, y: 1}
+      ]
 
+    var area = d3.area()
+        .x(d => xScale(d.x))
+        .y0(yScale(0))
+        .y1(d => yScale(d.y))
+        .curve(d3.curveLinear)
 
+    console.log(area(data))
 
+    g.append("path")
+        .attr("d", area(data))
+        .attr("fill", "#ffad99")
+        .attr("stroke", "red")
 
-
-
-
+    g.append("path")
+        .attr("d", area(data2))
+        .attr("fill", "#b3d9ff")
+        .attr("stroke", "blue")
 
   }
 
