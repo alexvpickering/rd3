@@ -1,6 +1,8 @@
 import React from 'react'
 import * as d3 from "d3"
 
+
+
 class Play extends React.Component {
 
   componentDidMount() {
@@ -9,35 +11,107 @@ class Play extends React.Component {
           height = 500 - (2 * margin),
           width  = 500 - (2 * margin)
 
-    const arc1 = d3.arc()
-        .innerRadius(0)
-        .outerRadius(100)
-        .startAngle(Math.PI/2)
-        .endAngle(Math.PI*3/2)
-
-    const arc2 = d3.arc()
-        .innerRadius(50)
-        .outerRadius(100)
-        .startAngle(0)
-        .endAngle(Math.PI*2)
 
 
-    const g = d3.select(node)
+    const data = [
+        {month: "2013", apples: 100, bananas: 200, oranges: 130},
+        {month: "2014", apples: 300, bananas: 150, oranges: 120},
+        {month: "2015", apples:  200, bananas:  280, oranges: 200},
+        {month: "2016", apples:  400, bananas:  100, oranges: 300},
+        {month: "2017", apples:  230, bananas:  400, oranges: 100}
+      ]
+
+    var stack = d3.stack()
+        .keys(["apples", "bananas", "oranges"])
+
+    var series = stack(data)
+
+    console.log(series)
+
+    var xScale = d3.scaleBand()
+        .domain(data.map(d => d.month))
+        .range([0, width])
+        .padding(0.3)
+
+    var yScale = d3.scaleLinear()
+        .domain([stackMin(), stackMax()])
+        .range([height, 0])
+
+    var colorScale = d3.scaleOrdinal(d3.schemeCategory10)
+
+    function extractValues(series) {
+      var values = [];
+      series.forEach(function(value) {
+        value.forEach(function(item) {
+          values = values.concat(item)
+        })
+      })
+      return values
+    }
+
+    function stackMin() {
+      var values = extractValues(series)
+      return d3.min(values)
+    }
+
+    function stackMax() {
+      var values = extractValues(series)
+      return d3.max(values)
+    }
+
+    const g = d3.select(node).append("g")
+    .attr("transform", `translate(${margin}, ${margin})`)
+
+    function renderYAxis() {
+      var yAxis = d3.axisLeft(yScale)
+
+      g.append("g")
+          .classed("y-axis", true)
+          .call(yAxis)
+
+      g.selectAll("g.y-axis g.tick")
+        .append("line")
+          .classed("grid-line", true)
+          .attr("x1", 0)
+          .attr("y1", 0)
+          .attr("x2", width)
+          .attr("y2", 0)
+    }
+
+    function renderXAxis() {
+      var xAxis = d3.axisBottom(xScale)
+
+      g.append("g")
+          .classed("x-axis", true)
+          .attr("transform", `translate(0, ${height})`)
+          .call(xAxis)
+    }
+
+    renderYAxis()
+    renderXAxis()
+
+    g.append("g")
+        .classed("stack-bar", true)
+      .selectAll("g")
+      .data(series)
+      .enter()
       .append("g")
-        .attr("transform", `translate(${margin}, ${margin})`)
-
-    g.append("path")
-        .attr("transform", "translate(200, 300)")
-        .attr("d", arc1())
-        .attr("fill", "red")
-
-    g.append("path")
-        .attr("transform", "translate(200, 100)")
-        .attr("d", arc2())
-        .attr("fill", "blue")
+        .attr("fill", d => colorScale(d.key))
+      .selectAll("rect")
+      .data(d => d)
+      .enter()
+      .append("rect")
+        .attr("x", (d, i) => xScale(2013 + i))
+        .attr("y", d => yScale(d["1"]))
+        .attr("width", xScale.bandwidth())
+        .attr("height", function(d) {return height - yScale(d["1"] - d["0"])})
 
 
-    g.append("path")
+
+
+    console.log(xScale(2013))
+
+
 
 
 
