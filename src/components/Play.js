@@ -6,44 +6,77 @@ class Play extends React.Component {
 
   componentDidMount() {
 
-    var data = [4, 8, 15, 16, 23, 42];
+    const margin = {top: 20, right: 30, bottom: 30, left: 60},
+          width = 960 - margin.left - margin.right,
+          height = 500 - margin.top - margin.bottom
 
-    var width = 420,
-        barHeight = 20
+    const y = d3.scaleLinear()
+        .range([height, 0])
 
-    const x = d3.scaleLinear()
-        .domain([0, d3.max(data)])
-        .range([0, width])
+    const x = d3.scaleBand()
+        .rangeRound([0, width])
+        .padding(.1)
 
-    var chart = d3.select(".chart")
-      .append("svg")
-        .attr("width", width)
-        .attr("height", barHeight * data.length)
+    const chart = d3.select(".chart")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform", `translate(${margin.left}, ${margin.top})`)
 
-    var bar = chart.selectAll("g")
-        .data(data)
-      .enter().append("g")
-        .attr("transform", (d, i) => `translate(0, ${barHeight * i})`)
+    d3.tsv("data.tsv", type, function(error, data) {
+      y.domain([0, d3.max(data, d => d.value)])
+      x.domain(data.map(v => v.name))
 
-    bar.append("rect")
-        .attr("width", d => x(d))
-        .attr("height", barHeight - 1)
+      const xAxis = d3.axisBottom(x)
+      const yAxis = d3.axisLeft(y)
+          .ticks(10, "%")
 
 
-    bar.append("text")
-        .attr("x", d => x(d) - 3)
-        .attr("y", barHeight/2)
-        .attr("dy", ".35em")
-        .text(d => d)
+      const bar = chart.selectAll("g")
+          .data(data)
+        .enter().append("g")
+          .attr("transform", (d, i) => `translate(${x(d.name)}, 0)`)
 
-    console.log(bar)
+
+      // data inherits from parent
+      bar.append("rect")
+          .attr("y", d => y(d.value))
+          .attr("width", x.bandwidth())
+          .attr("height", d => height - y(d.value))
+
+      chart.append("g")
+          .classed("x axis", true)
+          .attr("transform", `translate(0, ${height})`)
+          .call(xAxis)
+
+      chart.append("g")
+          .classed("y axis", true)
+          .call(yAxis)
+
+      chart.append("text")
+          .attr("transform", "rotate(-90)")
+          .attr("y",0 - margin.left)
+          .attr("x",0 - height / 2)
+          .attr("dy", ".71em")
+          .style("text-anchor", "middle")
+          .text("Frequency")
+
+
+
+
+    })
+
+    function type(d) {
+      d.value = +d.value
+      return d
+    }
 
   }
 
 
   render() {
     return (
-    <div className="chart"></div>
+    <svg className="chart"></svg>
     )
   }
 }

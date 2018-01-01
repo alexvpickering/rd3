@@ -1,9 +1,16 @@
+
 .chart rect {
   fill: steelblue;
+  shape-rendering: crispEdges;
 }
 
-.chart text {
-  fill: white;
+.axis text {
   font: 10px sans-serif;
-  text-anchor: end;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
 }
