@@ -40,6 +40,7 @@ class Play extends React.Component {
 
       // data inherits from parent
       bar.append("rect")
+          .classed("bar", true)
           .attr("y", d => y(d.value))
           .attr("width", x.bandwidth())
           .attr("height", d => height - y(d.value))

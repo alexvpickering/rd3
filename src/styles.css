@@ -8,6 +8,10 @@
   font: 10px sans-serif;
 }
 
+.bar:hover {
+  fill: brown;
+}
+
 .axis path,
 .axis line {
   fill: none;
