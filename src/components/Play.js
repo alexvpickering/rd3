@@ -1,10 +1,12 @@
 import React from 'react'
 import * as d3 from "d3"
+import './Play.css'
 
 
 class Play extends React.Component {
 
   componentDidMount() {
+    const node = this.node
 
     const margin = {top: 20, right: 30, bottom: 30, left: 60},
           width = 960 - margin.left - margin.right,
@@ -17,7 +19,7 @@ class Play extends React.Component {
         .rangeRound([0, width])
         .padding(.1)
 
-    const chart = d3.select(".chart")
+    const chart = d3.select(node)
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
       .append("g")
@@ -77,7 +79,7 @@ class Play extends React.Component {
 
   render() {
     return (
-    <svg className="chart"></svg>
+    <svg className="chart" ref={node => this.node = node}></svg>
     )
   }
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import * as d3 from 'd3'
 import { Container } from 'semantic-ui-react'
+import './AlphabetD3.css'
 
 class AlphabetD3 extends React.Component {
   constructor(props) {

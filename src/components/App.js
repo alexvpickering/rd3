@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import ReturnedAbcs from '../containers/ReturnedAbcs'
 import About from './About'
 import Play from './Play'
-import '../styles.css'
 
 import {
   Button,
