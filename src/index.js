@@ -1,12 +1,28 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import App from './components/App'
-import store from './store'
+import store from './redux/store'
+import { injectGlobal, ThemeProvider } from 'styled-components';
+import Home from './pages/Home'
+import theme from './utils/theme.js'
+
+
+
+ // Global style
+// eslint-disable-next-line
+injectGlobal`
+  body {
+    font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 0;
+  }
+`
+
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <ThemeProvider theme={theme}>
+      <Home />
+    </ThemeProvider>
   </Provider>,
-   document.getElementById('root')
- )
+  document.getElementById('root')
+)
