@@ -8,6 +8,7 @@ import SectionFigure from '../components/Section/SectionFigure'
 import SectionImage from '../components/Section/SectionImage'
 import SectionDescription from '../components/Section/SectionDescription'
 import Columns from '../components/Section/SectionColumns'
+import Footer from '../components/Footer/Footer.js'
 
 const Home = () => {
   return (
@@ -38,6 +39,7 @@ const Home = () => {
         </Page>
       </Section>
       <Section></Section>
+      <Footer></Footer>
     </div>
 
   )
