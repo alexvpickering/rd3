@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import store from './redux/store'
 import { injectGlobal, ThemeProvider } from 'styled-components';
-import Home from './pages/Home'
+import Home from './views/Home'
 import theme from './utils/theme.js'
 import Grid from './components/Grid/Grid.js'
 
@@ -15,6 +15,7 @@ injectGlobal`
   body {
     font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
     margin: 0;
+    line-height: 1.5;
   }
 `
 

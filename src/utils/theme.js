@@ -1,11 +1,19 @@
-// stled-components theme
+import { lighten, darken } from 'polished'
+
+// styled-components theme
+const navbar = darken(0.3, "#386CB0"),
+      gray_d = "gray",
+      gray_l = "#dfdfdf"
+
+
 const theme = {
   color: {
-    navbar: "#17313f",
-    hero: "#1b3f51",
-    action: "#254b5e",
+    navbar: navbar,
+    hero: lighten(0.03, navbar),
+    action: lighten(0.07, navbar),
     white: "#ffffff",
-    hover: "gray",
+    hover: gray_d,
+    border: gray_l,
   },
   breaks: {
     navbar: "320px",

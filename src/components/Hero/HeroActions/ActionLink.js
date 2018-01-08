@@ -18,6 +18,7 @@ const ActionLink = styled.a`
 
   &:last-child {
     border-right: none;
+    border-bottom: none;
 
   }
 
