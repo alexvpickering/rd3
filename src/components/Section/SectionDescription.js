@@ -6,5 +6,9 @@ const SectionDescription = styled.div`
     width: 37%;
   }
 
+  h2 {
+    font-weight: 600;
+  }
+
 `
 export default SectionDescription

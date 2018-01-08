@@ -5,7 +5,7 @@ import ActionsPage from './ActionsPage'
 
 const ActionsContainer = styled.div`
   background-color: ${props => props.theme.color.action};
-  padding: 20px 0;
+  ${'' /* padding: 20px 0; */}
 `
 
 const HeroActions = () => {

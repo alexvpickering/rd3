@@ -5,7 +5,7 @@ const NavBrand = styled(Link)`
   float: left;
   color: ${props => props.theme.color.white};
   text-decoration: none;
-  padding-top: 3px; /* vertical align brand and links */
+  padding-top: 4.5px; /* vertical align brand and links */
 
   svg {
     width: 15px;

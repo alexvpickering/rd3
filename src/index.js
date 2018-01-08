@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import store from './redux/store'
 import { injectGlobal, ThemeProvider } from 'styled-components';
-import theme from './utils/theme.js'
+import theme from './utils/theme'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import Home from './views/Home'
-import Article from './views/Article'
+import Example from './views/Example'
 
 
 // Global style
@@ -16,7 +16,8 @@ injectGlobal`
 body {
   font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.55;
+  font-size: 17px;
 }
 `
 
@@ -27,7 +28,7 @@ ReactDOM.render(
       <Router>
         <div>
           <Route exact path="/" component={Home}/>
-          <Route exact path="/article" component={Article}/>
+          <Route exact path="/article" component={Example}/>
         </div>
       </Router>
     </Provider>
