@@ -12,9 +12,9 @@ const HeroActions = () => {
   return (
     <ActionsContainer>
       <ActionsPage>
-        <ActionLink>First Link</ActionLink>
-        <ActionLink>Second Link</ActionLink>
-        <ActionLink>Third Link</ActionLink>
+        <ActionLink to="/">Home</ActionLink>
+        <ActionLink to="/article">Article</ActionLink>
+        <ActionLink to="/">Third Link</ActionLink>
       </ActionsPage>
     </ActionsContainer>
   )

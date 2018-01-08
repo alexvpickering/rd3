@@ -6,14 +6,6 @@ const NavItem = styled.li`
   color: ${props => props.theme.color.white};
   padding: 10.5px;
 
-  a {
-    color: inherit;
-    text-decoration: none;
-
-    &:hover {
-      color: ${props => props.theme.color.hover};
-    }
-  }
   /* breakpoint for nav */
   @media screen and (max-width: ${props => props.theme.breaks.navbar}) {
     float: none;

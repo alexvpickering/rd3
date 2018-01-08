@@ -1,19 +1,21 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
-const NavBrand = styled.a`
+const NavBrand = styled(Link)`
   float: left;
   color: ${props => props.theme.color.white};
   text-decoration: none;
-  padding-top: 2px; /* vertical align brand and links */
+  padding-top: 3px; /* vertical align brand and links */
 
   svg {
-    width: 24px;
+    width: 15px;
+    ${'' /* height: 25px; */}
     position: relative;
-    top: 4px;
+    top: 5px;
     stroke: currentColor;
     stroke-width: 3px;
     fill: none;
-    padding-right: 5px;
+    padding-right: 10px;
 
   }
   /* breakpoint for nav */

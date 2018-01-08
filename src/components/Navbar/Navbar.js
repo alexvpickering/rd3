@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import NavList from './NavList'
 import NavItem from './NavItem'
 import NavBrand from './NavBrand'
-
+import NavItemLink from './NavItemLink.js'
 
 // wrapper for Navbar
 const NavHead = styled.header`
@@ -15,15 +15,24 @@ background-color: ${props => props.theme.color.navbar};
 const Navbar = () => {
   return (
     <NavHead>
-      <NavBrand href="/">
-      <svg viewBox="-607 419 64 64">
-        <path d="M-573.4,478.9c-8,0-14.6-6.4-14.6-14.5s14.6-25.9,14.6-40.8c0,14.9,14.6,32.8,14.6,40.8S-565.4,478.9-573.4,478.9z"></path>
+      <NavBrand to="/">
+      <svg viewBox="0 0 22.538662 38.038109">
+       <g transform="translate(-73 -1e2)">
+        <g transform="matrix(.67 0 0 .67 28 42)" >
+         <path d="m84 1.2e2 -5.4-9.4-5.4-9.4h11 11l-5.4 9.4z"/>
+         <path d="m84-1.2e2 -5.4-9.4-5.4-9.4h11 11l-5.4 9.4z" transform="scale(1,-1)"/>
+        </g>
+       </g>
       </svg>
       ap bioinformatics
     </NavBrand>
     <NavList>
-      <NavItem><a href="/">blog</a></NavItem>
-      <NavItem><a href="/">about</a></NavItem>
+      <NavItem>
+        <NavItemLink to="/">blog</NavItemLink>
+      </NavItem>
+      <NavItem>
+        <NavItemLink to="/">about</NavItemLink>
+      </NavItem>
     </NavList>
   </NavHead>
 )

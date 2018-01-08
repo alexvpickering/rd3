@@ -1,7 +1,8 @@
-import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
-const ActionLink = styled.a`
+
+const ActionLink = styled(Link)`
   display: block;
   color: white;
   text-decoration: none;

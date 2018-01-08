@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" height="38mm" width="23mm" version="1.1" viewBox="0 0 22.538662 38.038109">
+ <g transform="translate(-73,-100)">
+  <g fill-opacity="0" transform="matrix(.67 0 0 .67 28 42)" stroke="#000" stroke-width=".5">
+   <path d="m84 1.2e2 -5.4-9.4-5.4-9.4h22l-5.4 9.4z"/>
+   <path d="m84-1.2e2 -5.4-9.4-5.4-9.4h22l-5.4 9.4z" transform="scale(1,-1)"/>
+  </g>
+ </g>
+</svg>
