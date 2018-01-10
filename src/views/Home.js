@@ -9,6 +9,7 @@ import SectionImage from '../components/Section/SectionImage'
 import SectionDescription from '../components/Section/SectionDescription'
 import Columns from '../components/Section/SectionColumns'
 import Footer from '../components/Footer/Footer.js'
+import ReturnedAbcs from '../components/Alphabet/ReturnedAbcs.js'
 
 const Home = () => {
   return (
@@ -29,16 +30,30 @@ const Home = () => {
         <Page>
           <Columns>
             <SectionDescription>
-              <h2>This will be a great section</h2>
+              <h2>This will be great</h2>
+              <hr/>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut volutpat, eros a aliquet auctor, augue tortor gravida mauris, facilisis ultrices massa urna eget urna. Ut eget tempor ipsum. Curabitur id metus rhoncus urna volutpat semper. Nam faucibus rhoncus odio. Suspendisse nec massa nisl. Curabitur scelerisque magna sit amet rutrum scelerisque. </p>
             </SectionDescription>
             <SectionFigure>
-              <SectionImage src="https://distill.pub/about/tsne.gif"></SectionImage>
+              <SectionImage src="https://cdn.rcsb.org/pdb101/motm/images/217-Opioid_Receptors-4dkl.jpg"></SectionImage>
             </SectionFigure>
           </Columns>
         </Page>
       </Section>
-      <Section></Section>
+      <Section>
+        <Page>
+          <Columns>
+            <SectionDescription>
+              <h2>This will be great</h2>
+              <hr/>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut volutpat, eros a aliquet auctor, augue tortor gravida mauris, facilisis ultrices massa urna eget urna. Ut eget tempor ipsum. Curabitur id metus rhoncus urna volutpat semper. Nam faucibus rhoncus odio. Suspendisse nec massa nisl. Curabitur scelerisque magna sit amet rutrum scelerisque. </p>
+            </SectionDescription>
+            <SectionFigure>
+              <ReturnedAbcs/>
+            </SectionFigure>
+          </Columns>
+      </Page>
+      </Section>
       <Footer></Footer>
     </div>
 

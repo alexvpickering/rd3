@@ -5,7 +5,6 @@ import ActionsPage from './ActionsPage'
 
 const ActionsContainer = styled.div`
   background-color: ${props => props.theme.color.action};
-  ${'' /* padding: 20px 0; */}
 `
 
 const HeroActions = () => {
@@ -13,8 +12,8 @@ const HeroActions = () => {
     <ActionsContainer>
       <ActionsPage>
         <ActionLink to="/">Home</ActionLink>
-        <ActionLink to="/article">Article</ActionLink>
-        <ActionLink to="/">Third Link</ActionLink>
+        <ActionLink to="/article">Latest</ActionLink>
+        <ActionLink to="/archive">Archive</ActionLink>
       </ActionsPage>
     </ActionsContainer>
   )

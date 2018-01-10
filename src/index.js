@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import Home from './views/Home'
 import Example from './views/Example'
+import ArchiveView from './views/ArchiveView'
 
 
 // Global style
@@ -29,6 +30,7 @@ ReactDOM.render(
         <div>
           <Route exact path="/" component={Home}/>
           <Route exact path="/article" component={Example}/>
+          <Route exact path="/archive" component={ArchiveView}/>
         </div>
       </Router>
     </Provider>

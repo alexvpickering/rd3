@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const Section = styled.div`
-  background: #f4f4f4;
+  background: ${props => props.theme.color.altwhite};
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   min-height: 300px;
   padding: 24px;
@@ -18,6 +18,11 @@ const Section = styled.div`
 
   p {
     margin-bottom: 40px;
+  }
+
+  hr {
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
   }
 `
 export default Section

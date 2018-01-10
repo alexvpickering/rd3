@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import ArticleMargins from './ArticleMargins.js'
 
 const ArticleByline = styled.div`
-  font-size: 12px;
+  font-size: ${props => props.theme.font.sm};
   line-height: 1.5;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);

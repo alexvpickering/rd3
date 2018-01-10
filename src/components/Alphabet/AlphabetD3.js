@@ -1,6 +1,7 @@
 import React from 'react'
 import * as d3 from 'd3'
 import './AlphabetD3.css'
+import SectionSVG from '../Section/SectionSVG.js'
 
 class AlphabetD3 extends React.Component {
   constructor(props) {
@@ -27,6 +28,8 @@ class AlphabetD3 extends React.Component {
         g = svg.append("g")
         .attr("transform", "translate(32," + (height / 2) + ")")
         .attr("class", "abcd3")
+
+    console.log(height)
 
     this.g = g
     this.updateData(alphabet, g);
@@ -73,12 +76,12 @@ class AlphabetD3 extends React.Component {
 
   render() {
     return (
-        <svg
-          ref={node => this.node=node}
+        <SectionSVG
+          innerRef={node => this.node=node}
           onClick={() => this.props.onLettersClick()}
           width={'100%'}
-          height={200}>
-        </svg>
+          height={400}>
+        </SectionSVG>
     )
   }
 }

@@ -12,6 +12,7 @@ const theme = {
     hero: lighten(0.03, navbar),
     action: lighten(0.07, navbar),
     white: "#ffffff",
+    altwhite: "#f4f4f4",
     hover: gray_d,
     border: gray_l,
   },
@@ -23,6 +24,7 @@ const theme = {
     xl: "1200px"
   },
   font: {
+    sm: "12px",
     base: "16px",
     lg: '30px',
     xl: '40px',

@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import Page from '../Page/Page.js'
 
 const Article = styled.div`
   padding-bottom: 72px;
