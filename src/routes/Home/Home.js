@@ -9,7 +9,7 @@ import Image from './Section/Image'
 import Description from './Section/Description'
 import Columns from './Section/Columns'
 import Footer from '../../shared/Footer/Footer'
-import AlphabetD3 from './AlphabetD3'
+import AlphabetD3Container from './AlphabetD3/AlphabetD3Container.js'
 
 const Home = () => {
   return (
@@ -49,7 +49,7 @@ const Home = () => {
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut volutpat, eros a aliquet auctor, augue tortor gravida mauris, facilisis ultrices massa urna eget urna. Ut eget tempor ipsum. Curabitur id metus rhoncus urna volutpat semper. Nam faucibus rhoncus odio. Suspendisse nec massa nisl. Curabitur scelerisque magna sit amet rutrum scelerisque. </p>
             </Description>
             <Figure>
-              <AlphabetD3/>
+              <AlphabetD3Container/>
             </Figure>
           </Columns>
       </Page>
