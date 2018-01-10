@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import AlphabetD3 from './AlphabetD3'
-import { fetchAbcs, ABC_ENDPOINT } from '../../redux/actions.js'
+import { fetchAbcs, ABC_ENDPOINT } from '../../../redux/actions.js'
 
 // function to transform redux store to props to pass to presentational components
 

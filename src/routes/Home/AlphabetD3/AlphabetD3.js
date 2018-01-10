@@ -1,6 +1,6 @@
 import React from 'react'
 import * as d3 from 'd3'
-import './AlphabetD3.css'
+import './AlphabetD3'
 import SectionSVG from '../Section/Svg'
 
 class AlphabetD3 extends React.Component {

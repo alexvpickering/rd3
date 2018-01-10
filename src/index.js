@@ -6,9 +6,9 @@ import { injectGlobal, ThemeProvider } from 'styled-components';
 import theme from './utils/theme'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
-import Home from './Home/Home.js'
-import Example from './Articles/Example/Example.js'
-import Archive from './Archive/Archive.js'
+import Home from './routes/Home/Home'
+import Example from './routes/Articles/Example/Example'
+import Archive from './routes/Archive/Archive'
 
 
 // Global style
@@ -35,5 +35,6 @@ ReactDOM.render(
       </Router>
     </Provider>
   </ThemeProvider>,
+
   document.getElementById('root')
 )

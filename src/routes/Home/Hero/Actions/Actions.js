@@ -3,19 +3,19 @@ import styled from 'styled-components'
 import ActionLink from './ActionLink'
 import ActionsPage from './ActionsPage'
 
-const Container = styled.div`
+const Wrapper = styled.div`
   background-color: ${props => props.theme.color.action};
 `
 
 const HeroActions = () => {
   return (
-    <Container>
+    <Wrapper>
       <ActionsPage>
         <ActionLink to="/">Home</ActionLink>
         <ActionLink to="/article">Latest</ActionLink>
         <ActionLink to="/archive">Archive</ActionLink>
       </ActionsPage>
-    </Container>
+    </Wrapper>
   )
 }
 

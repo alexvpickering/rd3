@@ -1,23 +1,23 @@
 import React from 'react'
-import Navbar from '../shared/Navbar/Navbar'
-import Footer from '../shared/Footer/Footer'
-import Article from '../shared/Article.js'
+import Navbar from '../../shared/Navbar/Navbar'
+import Footer from '../../shared/Footer/Footer'
+import Article from '../../shared/Article.js'
 
 import List from './List'
 import Preview from './Preview'
-import Container from './Container.js'
+import Wrapper from './Wrapper'
 import Meta from './Meta'
 import Date from './Date'
 import Tags from './Tags'
 
-import Page from '../shared/Page'
+import Page from '../../shared/Page'
 
 
 const Archive = () => {
   return (
     <div>
       <Navbar/>
-      <Container>
+      <Wrapper>
         <Page>
           <Article>
             <List>
@@ -37,7 +37,7 @@ const Archive = () => {
         </List>
       </Article>
     </Page>
-  </Container>
+  </Wrapper>
   <Footer/>
 </div>
 

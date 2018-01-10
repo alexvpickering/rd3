@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
-const Container = styled.div`
+const Wrapper = styled.div`
   background-color: ${props => props.theme.color.offwhite};
 `
 
-export default Container
+export default Wrapper

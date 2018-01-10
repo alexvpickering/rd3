@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const Container = styled.footer`
+const Wrapper = styled.footer`
   background-color: ${props => props.theme.color.hero};
   color: rgba(255, 255, 255, 0.4);
   text-align: center;
@@ -8,4 +8,4 @@ const Container = styled.footer`
   ${'' /* height: 200px; */}
 `
 
-export default Container
+export default Wrapper

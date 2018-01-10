@@ -1,11 +1,11 @@
 import React from 'react'
 import Nav from './Nav'
 import Page from '../Page'
-import Container from './Container.js'
+import Wrapper from './Wrapper'
 
 const Footer = () => {
   return (
-    <Container>
+    <Wrapper>
       <Page>
         <div>
           Alex Pickering is dedicated to making life long and healthy.
@@ -17,7 +17,7 @@ const Footer = () => {
           <a href="/">Twitter</a>
         </Nav>
       </Page>
-    </Container>
+    </Wrapper>
   )
 }
 
