@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import store from './redux/store'
 import { injectGlobal, ThemeProvider } from 'styled-components';
 import theme from './utils/theme'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import Home from './routes/Home/Home'
 import Example from './routes/Articles/Example/Example'
@@ -27,11 +27,11 @@ ReactDOM.render(
   <ThemeProvider theme={theme}>
     <Provider store={store}>
       <Router>
-        <div>
+        <Switch>
           <Route exact path="/" component={Home}/>
           <Route exact path="/article" component={Example}/>
           <Route exact path="/archive" component={Archive}/>
-        </div>
+        </Switch>
       </Router>
     </Provider>
   </ThemeProvider>,
