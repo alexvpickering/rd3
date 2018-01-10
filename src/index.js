@@ -6,9 +6,9 @@ import { injectGlobal, ThemeProvider } from 'styled-components';
 import theme from './utils/theme'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
-import Home from './views/Home'
-import Example from './views/Example'
-import ArchiveView from './views/ArchiveView'
+import Home from './Home/Home.js'
+import Example from './Articles/Example/Example.js'
+import Archive from './Archive/Archive.js'
 
 
 // Global style
@@ -30,7 +30,7 @@ ReactDOM.render(
         <div>
           <Route exact path="/" component={Home}/>
           <Route exact path="/article" component={Example}/>
-          <Route exact path="/archive" component={ArchiveView}/>
+          <Route exact path="/archive" component={Archive}/>
         </div>
       </Router>
     </Provider>
