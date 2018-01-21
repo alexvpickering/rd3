@@ -20,3 +20,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .Rproj.user
+
+# ip address
+src/utils/wanip.js
+src/utils/git-update-ip.sh

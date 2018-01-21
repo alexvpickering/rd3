@@ -1,8 +1,9 @@
 import axios from 'axios'
+import { WANIP } from '../utils/wanip.js'
 
 export const REQUEST_ABCS = 'REQUEST_ABCS'
 export const RECEIVE_ABCS = 'RECEIVE_ABCS'
-export const ABC_ENDPOINT = 'http://localhost:5656/ocpu/library/rd3server/R/abcs/json'
+export const ABC_ENDPOINT = `http://${WANIP}:8005/api/rd3server/abcs/`
 
 // * synchronous action creators
 

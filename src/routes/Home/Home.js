@@ -10,6 +10,7 @@ import Description from './Section/Description'
 import Columns from './Section/Columns'
 import Footer from '../../shared/Footer/Footer'
 import AlphabetD3Container from './AlphabetD3/AlphabetD3Container.js'
+import { WANIP } from '../../utils/wanip.js'
 
 const Home = () => {
   return (
