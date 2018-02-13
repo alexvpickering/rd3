@@ -33,7 +33,7 @@ export function fetchWANIP() {
     return axios
       .get(WANIP_URL)
       .then(
-        response => dispatch(receiveWANIP(response.data)),
+        response => dispatch(receiveWANIP(response.data.replace(/\n/g, ""))),
         error => console.log("An error occured", error)
       );
   };
