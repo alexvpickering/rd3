@@ -24,7 +24,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "deploy" : "yarn run build&&gh-pages -d build"
+    "deploy": "yarn run build&&gh-pages -d build"
   },
   "devDependencies": {
     "fetch-mock": "^5.13.1",

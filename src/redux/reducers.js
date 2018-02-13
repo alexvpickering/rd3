@@ -1,4 +1,4 @@
-import { REQUEST_ABCS, RECEIVE_ABCS } from './actions'
+import { REQUEST_ABCS, RECEIVE_ABCS, RECEIVE_WANIP } from "./actions";
 
 // state outline
 /*
@@ -9,26 +9,30 @@ import { REQUEST_ABCS, RECEIVE_ABCS } from './actions'
 }
 */
 
-
 // single reducer
 export default function abcs(
   state = {
     isFetching: false,
-    items: []
+    items: ["a", "b", "c"],
+    wanip: null
   },
   action
 ) {
   switch (action.type) {
     case REQUEST_ABCS:
       return Object.assign({}, state, {
-        isFetching: true,
-      })
+        isFetching: true
+      });
     case RECEIVE_ABCS:
       return Object.assign({}, state, {
         isFetching: false,
         items: action.abcs
-      })
+      });
+    case RECEIVE_WANIP:
+      return Object.assign({}, state, {
+        wanip: action.wanip
+      });
     default:
-      return state
+      return state;
   }
 }

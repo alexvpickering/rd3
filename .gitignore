@@ -22,5 +22,5 @@ yarn-error.log*
 .Rproj.user
 
 # ip address
-src/utils/wanip.js
-src/utils/git-update-ip.sh
+# src/utils/wanip.js
+# src/utils/git-update-ip.sh
